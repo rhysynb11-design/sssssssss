@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Gift 💕</title>
+  <link rel="stylesheet" href="formybaby.css">
+</head>
+<body>
+
+<!-- PASSWORD PAGE -->
+<div class="card" id="passwordPage">
+  <h2 class="title">hulaan mo</h2>
+
+  <input type="password" id="password" disabled>
+
+  <div class="keypad">
+    <button onclick="addNum(1)">1</button>
+    <button onclick="addNum(2)">2</button>
+    <button onclick="addNum(3)">3</button>
+    <button onclick="addNum(4)">4</button>
+    <button onclick="addNum(5)">5</button>
+    <button onclick="addNum(6)">6</button>
+    <button onclick="addNum(7)">7</button>
+    <button onclick="addNum(8)">8</button>
+    <button onclick="addNum(9)">9</button>
+    <button onclick="clearPass()">⌫</button>
+    <button onclick="addNum(0)">0</button>
+    <button onclick="checkPass()">✔</button>
+  </div>
+</div>
+
+<!-- QUESTION PAGE -->
+<div class="card hidden" id="questionPage">
+  <h2 class="title">what if ligawan kita???</h2>
+
+  <div class="buttons">
+    <!-- YES: FIXED SA GILID -->
+    <button class="yes" onclick="showLove()">sige</button>
+
+    <!-- NO: GUMAGALAW -->
+    <button class="no" id="noBtn">ayaw ko</button>
+  </div>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="card hidden" id="lovePage">
+  <h1 class="final-text">no choice ka?HAHAHAHAHAHAHAHA
+    <br>
+    payag ka na boi</h1>
+</div>
+
+<script>
+  const correctPassword = "1125";
+  const input = document.getElementById("password");
+
+  function addNum(num) {
+    input.value += num;
+  }
+
+  function clearPass() {
+    input.value = "";
+  }
+
+  function checkPass() {
+    if (input.value === correctPassword) {
+      passwordPage.classList.add("hidden");
+      questionPage.classList.remove("hidden");
+    } else {
+      alert("Wrong password 😢");
+      clearPass();
+    }
+  }
+
+  const noBtn = document.getElementById("noBtn");
+
+  function moveNo() {
+    const x = Math.random() * 320 - 140;
+    const y = Math.random() * 240 - 120;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  noBtn.addEventListener("mouseenter", moveNo);
+  noBtn.addEventListener("click", moveNo);
+
+  function showLove() {
+    questionPage.classList.add("hidden");
+    lovePage.classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>
